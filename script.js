@@ -1,17 +1,27 @@
 // Write your JavaScript code here!
 
-/* This block of code here shows how to format the HTML once you fetch some planetary JSON!
-<h2>Mission Destination</h2>
-<ol>
-   <li>Name: ${}</li>
-   <li>Diameter: ${}</li>
-   <li>Star: ${}</li>
-   <li>Distance from Earth: ${}</li>
-   <li>Number of Moons: ${}</li>
-</ol>
-<img src="${}">
-*/
+// This block of code here shows how to format the HTML once you fetch some planetary JSON!
+// <h2>Mission Destination</h2>
+// {   <ol>
+//     <li>Name: ${}</li> json[2].name;
+//     <li>Diameter: ${}</li> json[2].diameter;
+//     <li>Star: ${}</li> json[2].star;
+//     <li>Distance from Earth: ${}</li> json[2].distance;
+//     <li>Number of Moons: ${}</li> json[2].moons;
+// </ol>}
+
+{/* <img src= ${};></img> */}
+
 window.addEventListener("load", function() {
+    fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) {
+        response.json().then( function(json) {
+            planetName.innerHTML += ` ${json[2].name}`;
+            planetDiameter.innerHTML += ` ${json[2].diameter}`;
+            planetStar.innerHTML += ` ${json[2].star}`;
+            planetDistance.innerHTML += ` ${json[2].distance}`;
+            planetMoons.innerHTML += ` ${json[2].moons}`;
+        });
+    });
     let form = document.querySelector("form");
     form.addEventListener("submit", function(event) {
         let inputPilot = document.querySelector("input[name=pilotName]");
