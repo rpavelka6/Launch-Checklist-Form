@@ -18,7 +18,13 @@
                     alert("Co-Pilot name must be a string");
                 }
                 let inputFuelLevel = document.querySelector("input[name=fuelLevel]");
+                if(isNaN(parseInt(inputFuelLevel.value))) {
+                    alert("Fuel Level must be a number");
+                }
                 let inputCargoWeight = document.querySelector("input[name=cargoWeight]");
+                if(isNaN(parseInt(inputCargoWeight.value))) {
+                    alert("Cargo Weight must be a number");
+                }                
                 if (inputPilot.value === "" || inputCoPilot.value === "" || inputFuelLevel.value === "" || inputCargoWeight.value === "") {
                     alert("all fields must be entered");
                     event.preventDefault();
@@ -47,19 +53,6 @@
                 </div>
                 <button id="formSubmit">Submit</button>
             </form>
-            <!-- <script>
-                let button = document.getElementById("formSubmit"); -->
-                <!-- // add event handler for when button is clicked
-                // button.addEventListener("click", function() {
-                //     let inputPilot = document.getElementById("pilotName");
-                //     let inputCoPilot = document.getElementById("copilotName");
-                //     let inputFuelLevel = document.getElementById("fuelLevel");
-                //     let inputCargoWeight = document.getElementById("cargoWeight");
-                //     if (inputPilot.value === "" || inputCoPilot.value === "" || inputFuelLevel.value === "" || inputCargoWeight.value === "") {
-                //         alert("all fields must be entered");
-                //     } -->
-                <!-- // })
-            </script> -->
         </div>
         <div id="launchStatusCheck">
             <h2 id="launchStatus">Awaiting Information Before Launch</h2>
