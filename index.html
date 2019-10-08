@@ -1,10 +1,31 @@
 <!DOCTYPE>
 <html>
     <head>
-        <title>Launch Checklist1</title>
+        <title>Launch Checklist</title>
         <link rel = "stylesheet" type = "text/css" href = "styles.css" />
         <script src = "script.js"></script>
     </head>
+    <script>
+        window.addEventListener("load", function() {
+            let form = document.querySelector("form");
+            form.addEventListener("submit", function(event) {
+                let inputPilot = document.querySelector("input[name=pilotName]");
+                if((typeof inputPilot.value) !== 'string') {
+                    alert("Pilot name must be a string");
+                }      
+                let inputCoPilot = document.querySelector("input[name=copilotName]");
+                if((typeof inputCoPilot.value) !== 'string') {
+                    alert("Co-Pilot name must be a string");
+                }
+                let inputFuelLevel = document.querySelector("input[name=fuelLevel]");
+                let inputCargoWeight = document.querySelector("input[name=cargoWeight]");
+                if (inputPilot.value === "" || inputCoPilot.value === "" || inputFuelLevel.value === "" || inputCargoWeight.value === "") {
+                    alert("all fields must be entered");
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
     <body>
         <h1>Launch Checklist Form</h1>
         <div id="missionTarget">
@@ -26,6 +47,19 @@
                 </div>
                 <button id="formSubmit">Submit</button>
             </form>
+            <!-- <script>
+                let button = document.getElementById("formSubmit"); -->
+                <!-- // add event handler for when button is clicked
+                // button.addEventListener("click", function() {
+                //     let inputPilot = document.getElementById("pilotName");
+                //     let inputCoPilot = document.getElementById("copilotName");
+                //     let inputFuelLevel = document.getElementById("fuelLevel");
+                //     let inputCargoWeight = document.getElementById("cargoWeight");
+                //     if (inputPilot.value === "" || inputCoPilot.value === "" || inputFuelLevel.value === "" || inputCargoWeight.value === "") {
+                //         alert("all fields must be entered");
+                //     } -->
+                <!-- // })
+            </script> -->
         </div>
         <div id="launchStatusCheck">
             <h2 id="launchStatus">Awaiting Information Before Launch</h2>
