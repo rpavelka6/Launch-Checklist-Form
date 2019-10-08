@@ -47,29 +47,30 @@ window.addEventListener("load", function() {
         // Display pilot and copilot names
         faultyItems.style.visibility = 'visible';
         pilotStatus.innerHTML = `Pilot Ready ${inputPilot.value}`;
-        pilotStatus.style.visibility = 'visible';
         copilotStatus.innerHTML += ` ${inputCoPilot.value}`;
-        copilotStatus.style.visibility = 'visible';
 
         // Verify enough fuel to launch
         if (parseInt(inputFuelLevel.value)  < 10000) {
-            // faultyItems.style.visibility = 'visible';
             cargoStatus.innerHTML = 'Cargo weight low enough for launch';
             fuelStatus.innerHTML = 'Not enough fuel for the journey!';
             document.querySelector("h2").innerHTML = "Shuttle not ready for launch";
             document.querySelector("h2").style.color = "red";
             event.preventDefault();
+        } else {
 
+            // Verify not too much weight to launch
+            if (parseInt(inputCargoWeight.value) > 10000) {
+                faultyItems.style.visibility = 'visible';
+                fuelStatus.innerHTML = 'Fuel level high enough for launch';
+                cargoStatus.innerHTML = 'Too much mass for shuttle to take off!';
+                document.querySelector("h2").innerHTML = "Shuttle not ready for launch";
+                document.querySelector("h2").style.color = 'red';
+                event.preventDefault();
+            } else {
+                document.querySelector("h2").innerHTML = "Shuttle ready for launch";
+                document.querySelector("h2").style.color = 'green';
+                event.preventDefault();
+            }
         }
-
-        // Verify not too much weight to launch
-        if (parseInt(inputCargoWeight.value) > 10000) {
-           faultyItems.style.visibility = 'visible';
-           fuelStatus.innerHTML = 'Fuel level high enough for launch';
-           cargoStatus.innerHTML = 'Too much mass for shuttle to take off!';
-           document.querySelector("h2").innerHTML = "Shuttle not ready for launch";
-           document.querySelector("h2").style.color = 'red';
-           event.preventDefault();
-       }
    });
 });
