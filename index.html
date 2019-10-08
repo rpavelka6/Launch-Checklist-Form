@@ -5,33 +5,6 @@
         <link rel = "stylesheet" type = "text/css" href = "styles.css" />
         <script src = "script.js"></script>
     </head>
-    <script>
-        window.addEventListener("load", function() {
-            let form = document.querySelector("form");
-            form.addEventListener("submit", function(event) {
-                let inputPilot = document.querySelector("input[name=pilotName]");
-                if((typeof inputPilot.value) !== 'string') {
-                    alert("Pilot name must be a string");
-                }      
-                let inputCoPilot = document.querySelector("input[name=copilotName]");
-                if((typeof inputCoPilot.value) !== 'string') {
-                    alert("Co-Pilot name must be a string");
-                }
-                let inputFuelLevel = document.querySelector("input[name=fuelLevel]");
-                if(isNaN(parseInt(inputFuelLevel.value))) {
-                    alert("Fuel Level must be a number");
-                }
-                let inputCargoWeight = document.querySelector("input[name=cargoWeight]");
-                if(isNaN(parseInt(inputCargoWeight.value))) {
-                    alert("Cargo Weight must be a number");
-                }                
-                if (inputPilot.value === "" || inputCoPilot.value === "" || inputFuelLevel.value === "" || inputCargoWeight.value === "") {
-                    alert("all fields must be entered");
-                    event.preventDefault();
-                }
-            });
-        });
-    </script>
     <body>
         <h1>Launch Checklist Form</h1>
         <div id="missionTarget">
@@ -57,7 +30,7 @@
         <div id="launchStatusCheck">
             <h2 id="launchStatus">Awaiting Information Before Launch</h2>
             <div  id="faultyItems">
-                <ol>
+                <ol id='launchStatusList'>
                     <li id="pilotStatus">Pilot Ready</li>
                     <li id="copilotStatus">Co-pilot Ready</li>
                     <li id="fuelStatus">Fuel level high enough for launch</li>
