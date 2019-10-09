@@ -15,11 +15,25 @@
 window.addEventListener("load", function() {
     fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) {
         response.json().then( function(json) {
+        const destination = document.getElementById("missionTarget");
+        // destination.innerHTML =
+        //     planetName += ${json[2].name};
+            // <ol>
+            //     <li>planetName ${json[2].name}</li>
+            //     <li>planetDiameter ${json[2].diameter}</li>
+            //     <li>planetStar ${json[2].star}</li>
+            //     <li>planetDistance ${json[2].distance}</li>
+            //     <li>planetMoons ${json[2].moons}</li>
+            // </ol>
+            //    <img src=${json[0].image} height=250></img>
+        //  `;
             planetName.innerHTML += ` ${json[2].name}`;
             planetDiameter.innerHTML += ` ${json[2].diameter}`;
             planetStar.innerHTML += ` ${json[2].star}`;
             planetDistance.innerHTML += ` ${json[2].distance}`;
             planetMoons.innerHTML += ` ${json[2].moons}`;
+            destination.planetImage.innerHTML += `src=${json[2].image}`;
+            console.log(planetImage.innerHtML);
         });
     });
     let form = document.querySelector("form");
